@@ -1,3 +1,4 @@
+# live demo: http://jsfiddle.net/cr2xvd6v/
 class TodosCollection extends Backbone.Collection
   fetch: (options) -> options.success && _.delay((=> options.success()), 1000) # faking fetched and trigger the success callback
   get: (id) -> {} if id == "123" # faking found a todo if id 123
