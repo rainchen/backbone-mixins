@@ -15,17 +15,7 @@ console.log todo.properties()
 # => Object {cid="string", attributes="object", ...}
 ###
 Backbone.Mixins ||= {}
-(->
-  Backbone.Mixins.Inspectable =
-    inspect: (options) -> inspectClass(@, options)
-
-    methods: -> inspectClass(@).methods
-    properties: -> inspectClass(@).properties
-
-    prototypeMethods: -> inspectClass(@, prototype: true).methods
-    prototypeProperties: -> inspectClass(@, prototype: true).properties
-
-
+Backbone.Mixins.Inspectable = (->
   # This function receives an arbitrary object and returns the name of it's prototype, a list with all it's methods and an object with the name of it's properties (and their types).
   # options should one {prototype: true}
   # return a hash object like {className: "", methods: [...], attributes: {..}}
@@ -65,4 +55,12 @@ Backbone.Mixins ||= {}
     className: className
     methods: methods
     properties: properties
+
+  inspect: (options) -> inspectClass(@, options)
+  methods: -> inspectClass(@).methods
+  properties: -> inspectClass(@).properties
+
+  prototypeMethods: -> inspectClass(@, prototype: true).methods
+  prototypeProperties: -> inspectClass(@, prototype: true).properties
+
 )()
