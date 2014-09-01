@@ -47,4 +47,5 @@ Backbone.Mixins.RouteFilter =
     if @_halted && @_halted.name
       callback = @[@_halted.name]
       callback?.apply @, @_halted.arguments # trigger original route callback
+      @trigger.apply @, ["after:route:#{@_halted.name}"].concat(_.toArray(@_halted.arguments)) # trigger after filter callback
     @_halted = false # reset the flag

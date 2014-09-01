@@ -57,6 +57,7 @@ Backbone.Mixins.RouteFilter = {
       if (callback != null) {
         callback.apply(this, this._halted["arguments"]);
       }
+      this.trigger.apply(this, ["after:route:" + this._halted.name].concat(_.toArray(this._halted["arguments"])));
     }
     return this._halted = false;
   }
