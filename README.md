@@ -32,4 +32,6 @@ class TodosRouter extends Backbone.Router
 
 live demo: http://jsfiddle.net/cr2xvd6v/
 
+discussion: https://github.com/jashkenas/backbone/pull/494#issuecomment-53946090
+
 ---
