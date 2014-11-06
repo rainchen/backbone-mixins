@@ -29,6 +29,7 @@ Backbone.Mixins.RouteFilter =
   route: (route, name, callback) ->
     Backbone.Router::route.call @, route, name, ->
       @_halted = false # reset the flag
+      @trigger.apply @, ["before:route"].concat(_.toArray(arguments)) # trigger general before filter callback
       @trigger.apply @, ["before:route:#{name}"].concat(_.toArray(arguments)) # trigger before filter callback
       # using @trigger.apply can not get the return result, so use a special attribute "_halted" to prevent the original route callback and after filter from running.
       if @_halted == true # log the halted info
